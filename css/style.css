@@ -125,3 +125,7 @@ p.animate-type {
         opacity: 0;
     }
 }
+
+body {
+    touch-action: none;
+}
