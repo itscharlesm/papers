@@ -56,8 +56,8 @@ body {
 }
 
 img {
-    max-height: 300px;
-    width: 250px;
+    max-height: 400px;
+    width: 150px;
     user-select: none;
 }
 
