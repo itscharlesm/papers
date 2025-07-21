@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Zeyada&display=swap');
 
+/* Base body */
 body {
     height: 100vh;
     display: flex;
@@ -8,8 +9,10 @@ body {
     background-size: 1000px;
     background-image: url("https://www.psdgraphics.com/wp-content/uploads/2022/01/white-math-paper-texture.jpg");
     background-position: center center;
+    margin: 0;
 }
 
+/* Paper appearance */
 .paper {
     background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
     background-size: 500px;
@@ -20,26 +23,13 @@ body {
     position: absolute;
 }
 
+/* Heart paper */
 .paper.heart {
     position: relative;
     width: 200px;
     height: 200px;
     padding: 0;
     border-radius: 50%;
-}
-
-.paper.image {
-    padding: 10px;
-}
-
-.paper.image p {
-    font-size: 30px;
-}
-
-img {
-    max-height: 300px;
-    width: 100%;
-    user-select: none;
 }
 
 .paper.heart::after {
@@ -56,22 +46,82 @@ img {
     opacity: 0.6;
 }
 
-.paper.red {
-    /*   filter: hue-rotate(90deg); */
+/* Image paper */
+.paper.image {
+    padding: 10px;
 }
 
-.paper:nth-of-type(3n) {
-    background-position: left top;
+.paper.image p {
+    font-size: 30px;
 }
 
-.paper:nth-of-type(3n) {
-    /*   filter: hue-rotate(200deg); */
+img {
+    max-height: 300px;
+    width: 100%;
+    user-select: none;
 }
 
+/* Paragraph text styling */
 p {
     font-family: 'Zeyada';
     font-size: 50px;
     color: rgb(0, 0, 0);
     opacity: 0.75;
     user-select: none;
+    margin: 10px 0;
+}
+
+/* Animation: typewriter */
+@keyframes handwriting {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Only add this class via JS to trigger typing effect */
+p.animate-type {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid rgba(0,0,0,0.75);
+    animation: handwriting 4s steps(40, end) forwards;
+}
+
+/* Optional hover glow */
+.paper:hover {
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Falling heart animation */
+.hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart-float {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+    background-size: contain;
+    animation: floatHearts 10s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(0.5);
+        opacity: 0;
+    }
 }
