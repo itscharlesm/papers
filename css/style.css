@@ -87,7 +87,13 @@ p.animate-type {
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid rgba(0, 0, 0, 0.75);
-    animation: handwriting 2s steps(40, end) forwards;
+    animation: handwriting 2s steps(40, end) forwards, hide-caret 0s 2s forwards;
+}
+
+@keyframes hide-caret {
+    to {
+        border-right: none;
+    }
 }
 
 /* Optional hover glow */
