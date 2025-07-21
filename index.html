@@ -11,25 +11,25 @@
 </head>
 
 <body>
-<p class="p1" style="text-align: center"></p>
+    <p class="p1" style="text-align: center"></p>
     <!-- Developed by Charles  -->
     <div class="paper heart">
     </div>
 
     <div class="paper image">
-        <p> and I fallen in</p>
-        <p>Love with You 😍 </p>
-        <img src="https://iili.io/HSzXpzg.jpg" />
+        <p class="p1" style="text-align: center">look ohhh, you still look</p>
+        <p class="p1" style="text-align: center">pretty even you're hungry</p>
+        <img src="css/images/hungry.jpg" />
     </div>
 
     <div class="paper image">
         <p class="p1" style="text-align: center">I really like being with you</p>
         <p class="p1" style="text-align: center">no matter what we do</p>
         <img src="css/images/outing.jpg" />
-    </div>z
+    </div>
 
     <div class="paper image">
-        <p class="p1" style="text-align: center">You're gonna be busy next week,</p>
+        <p class="p1" style="text-align: center">I know you’ll be busy starting next week,</p>
         <p class="p1" style="text-align: center">but I do hope there are times</p>
         <p class="p1" style="text-align: center">we could spend together causeeee....</p>
     </div>
@@ -57,6 +57,24 @@
         <p class="p1" style="text-align: center">Drag the papers to move hehe</p>
     </div>
 
+    <audio id="bgMusic" src="css/music/those_eyes.mp3" loop></audio>
+
+    <script>
+        const audio = document.getElementById("bgMusic");
+
+        // Try to play after any user interaction
+        function enableAudioPlayback() {
+            audio.play().catch(err => {
+                console.log("Playback failed:", err);
+            });
+            // Remove the listener after first interaction
+            document.removeEventListener('click', enableAudioPlayback);
+        }
+
+        document.addEventListener('click', enableAudioPlayback);
+    </script>
+
     <script src="js/index.js"></script>
 </body>
+
 </html>
