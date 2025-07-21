@@ -8,9 +8,46 @@ paperElements.forEach((paper, index) => {
     if (index !== 0) {
         paper.style.display = 'none';
     } else {
-        paper.querySelectorAll('p').forEach(p => p.classList.add('animate-type'));
+        animateParagraphsSequentially(paper);
     }
 });
+
+// Sequential paragraph typewriter animation
+function animateParagraphsSequentially(paper) {
+    const paragraphs = paper.querySelectorAll('p');
+    let current = 0;
+
+    function showNext() {
+        if (current < paragraphs.length) {
+            const p = paragraphs[current];
+            p.style.display = 'block';
+            p.classList.remove('animate-type');
+            void p.offsetWidth;
+            p.classList.add('animate-type');
+
+            const duration = 4000; // Match CSS animation duration (4s)
+            setTimeout(() => {
+                current++;
+                showNext();
+            }, duration);
+        } else {
+            // Optionally reveal image after all paragraphs
+            const img = paper.querySelector('img');
+            if (img) {
+                img.style.display = 'block';
+            }
+        }
+    }
+
+    // Hide all first
+    paragraphs.forEach(p => (p.style.display = 'none'));
+    const img = paper.querySelector('img');
+    if (img) {
+        img.style.display = 'none';
+    }
+
+    showNext();
+}
 
 class Paper {
     constructor(paper, index) {
@@ -80,11 +117,7 @@ class Paper {
             const next = paperElements[currentIndex];
             if (next) {
                 next.style.display = 'block';
-                next.querySelectorAll('p').forEach(p => {
-                    p.classList.remove('animate-type');
-                    void p.offsetWidth;
-                    p.classList.add('animate-type');
-                });
+                animateParagraphsSequentially(next);
             }
         }
 

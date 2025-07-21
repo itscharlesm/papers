@@ -129,3 +129,10 @@ p.animate-type {
 body {
     touch-action: none;
 }
+
+p {
+    display: none; /* Hide initially; will be shown with JS one by one */
+}
+img {
+    display: none; /* Same for image; shown after typing */
+}
