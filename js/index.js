@@ -25,7 +25,7 @@ function animateParagraphsSequentially(paper) {
             void p.offsetWidth;
             p.classList.add('animate-type');
 
-            const duration = 4000; // Match CSS animation duration (4s)
+            const duration = 2000; // Match CSS animation duration (2s)
             setTimeout(() => {
                 current++;
                 showNext();
